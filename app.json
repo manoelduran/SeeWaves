@@ -5,7 +5,11 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "splash": {
+      "image": "./assets/wave.png",
+      "backgroundColor": "#FFF"
+    }
   },
   "name": "seewaves"
 }
