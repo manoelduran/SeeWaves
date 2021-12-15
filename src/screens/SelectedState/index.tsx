@@ -1,8 +1,8 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { StatusBar, Text } from 'react-native'
+import { StatusBar } from 'react-native'
 import * as api from '../../services/api';
-import { StateList, Container } from './styles';
+import { CityList, Container, Header, Title, Subtitle } from './styles';
 import { Loading } from '../../components/Loading';
 import { CitiesList } from '../../components/CitiesList';
 
@@ -12,13 +12,13 @@ interface Params {
 export function SelectedState() {
     const navigation = useNavigation();
     const route = useRoute();
-    const {state} = route.params as Params;
-    const [cidades, setCidades] = useState<City[]>([]);
+    const { state } = route.params as Params;
+    const [cities, setCities] = useState<City[]>([]);
     const [loading, setLoading] = useState(true);
     async function fetchSelectedState() {
         try {
             const listOfCities = await api.searchCities(state.abreviatura);
-            setCidades(listOfCities)
+            setCities(listOfCities)
         } catch (err) {
             console.log(err)
         } finally {
@@ -26,28 +26,36 @@ export function SelectedState() {
         }
     }
     useEffect(() => {
-       fetchSelectedState()
+        fetchSelectedState()
     }, []);
-    function handleSelectedState(state: State, city: City){
-        navigation.navigate('Forecast', { state , city})
+    function handleSelectedState(state: State, city: City) {
+        navigation.navigate('Forecast', { state, city })
     }
     return (
         <Container>
-            <StatusBar
-                barStyle="light-content"
-                backgroundColor="transparent"
-                translucent
-            />
-            <Text> {state.abreviatura} </Text>
+            <Header>
+                <StatusBar
+                    barStyle="dark-content"
+                    translucent
+                    backgroundColor="transparent"
+                />
+                <Title>
+                    Você está em {'\n'}
+                    {state.abreviatura}
+                </Title>
+                <Subtitle>
+                    Selecione uma cidade:
+                </Subtitle>
+            </Header>
             {loading ?
                 <Loading /> :
-                    <>
-                    {cidades.map((city) => (
-                        <CitiesList key={city.id}  onPress={() => handleSelectedState(state, city)} cidade={city.cidade} id={city.id}  />
-                    ))
-
+                <CityList
+                    data={cities}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item }) =>
+                        <CitiesList key={item.id} onPress={() => handleSelectedState(state, item)} cidade={item.cidade} id={item.id} />
                     }
-                    </>
+                />
             }
         </Container>
     );

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { BackHandler, StatusBar } from 'react-native'
 import { StateofList } from '../../components/StateofList';
 import * as api from '../../services/api';
-import { StateList, Container } from './styles';
+import { StateList, Container, Header, Title, Subtitle} from './styles';
 import { Loading } from '../../components/Loading';
 
 
@@ -34,18 +34,28 @@ export function Home() {
     }
     return (
         <Container>
-            <StatusBar
-                barStyle="light-content"
-                backgroundColor="transparent"
-                translucent
-            />
+                 <Header>
+                <StatusBar
+                    barStyle="dark-content"
+                    translucent
+                    backgroundColor="transparent"
+                />
+                <Title>
+                    Bem vindo {'\n'}
+                    ao {'\n'}
+                    SeeWaves
+                </Title>
+                <Subtitle>
+                    Selecione um estado:
+                </Subtitle>
+            </Header>
             {loading ?
                 <Loading /> :
                 <StateList
                     data={list}
                     keyExtractor={item => item.abreviatura}
                     renderItem={({ item }) =>
-                        <StateofList key={item.abreviatura} abreviatura={item.abreviatura} detalhes={item.detalhes} onPress={() => handleSelectedState(item)} />}
+                        <StateofList key={item.abreviatura} abreviatura={item.abreviatura} onPress={() => handleSelectedState(item)} />}
                 />
             }
         </Container>

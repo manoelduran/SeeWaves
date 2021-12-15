@@ -1,6 +1,6 @@
 import React from 'react';
 import { RectButtonProps } from 'react-native-gesture-handler';
-import { Container, DataContainer, Brand, Name } from './styles';
+import { Container, DataContainer, StateName } from './styles';
 
 
 
@@ -12,7 +12,7 @@ export function StateofList({abreviatura, ...rest}: StateProps) {
     return (
         <Container  {...rest}  >
             <DataContainer>
-                <Brand>{abreviatura}</Brand>
+                <StateName>{abreviatura}</StateName>
             </DataContainer>
         </Container>
     );

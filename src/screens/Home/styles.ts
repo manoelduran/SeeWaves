@@ -1,4 +1,5 @@
 import { FlatList } from 'react-native';
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
@@ -8,21 +9,26 @@ background-color: ${({ theme }) => theme.colors.background_primary};
 `;
 
 export const Header = styled.View`
-flex-direction: row;
-align-items: center;
-justify-content: space-between;
-padding: 32px 24px;
 width: 100%;
-height: 113px;
+height: 325px;
 background-color: ${({ theme }) => theme.colors.header};
-color: ${({ theme }) => theme.colors.main};
-font-family: ${({ theme }) => theme.fonts.medium};
+justify-content: center;
+padding: 25px;
+padding-top: ${getStatusBarHeight() + 30}px;
 `;
 
-export const TotalCars = styled.Text`
+export const Title = styled.Text`
+font-size: ${RFValue(30)}px;
+font-family: ${({ theme }) => theme.fonts.medium};
+color: ${({ theme }) => theme.colors.shape};
+margin-top: 24px;
+`;
+
+export const Subtitle = styled.Text`
 font-size: ${RFValue(15)}px;
-font-family: ${({ theme }) => theme.fonts.regular};
-color: ${({ theme }) => theme.colors.text};
+font-family: ${({ theme }) => theme.fonts.medium};
+color: ${({ theme }) => theme.colors.shape};
+margin-top: 24px;
 `;
 
 export const StateList = styled(FlatList as new () =>FlatList<{estados: State[]}>).attrs({
@@ -32,3 +38,5 @@ export const StateList = styled(FlatList as new () =>FlatList<{estados: State[]}
     showsVerticalScrollIndicator: false
     })`
     `;
+
+

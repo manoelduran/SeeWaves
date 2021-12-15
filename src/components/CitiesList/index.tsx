@@ -1,8 +1,6 @@
 import React from 'react';
 import { RectButtonProps } from 'react-native-gesture-handler';
-import { Container, DataContainer, Brand, Name } from './styles';
-
-
+import { Container, DataContainer, CityName } from './styles';
 
 interface CitiesProps extends RectButtonProps {
     cidade: string;
@@ -13,7 +11,7 @@ export function CitiesList({ cidade, ...rest }: CitiesProps) {
     return (
         <Container {...rest}  >
             <DataContainer>
-                <Brand> {cidade} </Brand>
+                <CityName> {cidade} </CityName>
             </DataContainer>
         </Container>
     );
