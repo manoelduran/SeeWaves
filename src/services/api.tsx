@@ -16,7 +16,6 @@ export async function searchCities(abreviatura: string): Promise<City[]> {
 };
 
 export async function searchDays(id: string): Promise<Days[]> {
-
-    const result = await api.get<{ dias: Days[] }>(`/onda/cidade/${id}`)
+    const result = await api.get <{dias: Days[]} > (`/onda/cidade/${id}`)
     return result.data.dias
 };

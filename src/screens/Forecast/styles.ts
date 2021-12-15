@@ -31,7 +31,7 @@ color: ${({ theme }) => theme.colors.shape};
 margin-top: 24px;
 `;
 
-export const DaysList = styled(FlatList as new () =>FlatList<{ dias: Days[] }>).attrs({
+export const ListDays = styled(FlatList as new () =>FlatList<{ dias: Days[] }>).attrs({
     contentContainerStyle: {
         padding: 24
     },

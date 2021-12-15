@@ -1,6 +1,6 @@
 import React from 'react';
 import { RectButtonProps } from 'react-native-gesture-handler';
-import { Container, DataContainer, Brand} from './styles';
+import { Container, DataContainer, Brand } from './styles';
 
 
 

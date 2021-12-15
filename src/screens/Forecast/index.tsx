@@ -2,7 +2,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'react-native'
 import * as api from '../../services/api';
-import { Container, Header, Title, Subtitle } from './styles';
+import { Container, Header, Title, Subtitle, ListDays } from './styles';
 import { Loading } from '../../components/Loading';
 import { DaysList } from '../../components/DaysList';
 
@@ -29,9 +29,8 @@ export function Forecast() {
     useEffect(() => {
         fetchDays()
     }, []);
-    console.log(days)
-    function handleWaves(state: State, city: City, day: Days) {
-        navigation.navigate('Waves', { state, city, day })
+    function handleWaves( city: City, day: Days) {
+        navigation.navigate('Waves', {  city, day })
     }
     return (
         <Container>
@@ -52,12 +51,13 @@ export function Forecast() {
             </Header>
             {loading ?
                 <Loading /> :
-                <DaysList
+                <ListDays
                     data={days}
                     keyExtractor={item => item.dia}
                     renderItem={({ item }) =>
-                        <DaysList  onPress={() => handleWaves(state, city, item)} dia={item.dia} key={item.dia} />
-                    }
+                        <DaysList
+                            dia={item.dia} onPress={() => handleWaves(city, item)}
+                        />}
                 />
             }
         </Container>
