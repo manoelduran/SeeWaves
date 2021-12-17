@@ -29,7 +29,10 @@ export function SelectedState() {
     }
     useEffect(() => {
         fetchSelectedState()
-    }, [state.abreviatura]);
+        return () => {
+            setCities([]); // This worked for me
+          };
+    }, []);
     function handleSelectedState(state: State, city: City) {
         navigation.navigate('Forecast', { state, city })
     }

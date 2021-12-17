@@ -23,6 +23,9 @@ export function Home() {
     }
     useEffect(() => {
         fetchStateList()
+        return () => {
+            setList([]); // This worked for me
+          };
     }, []);
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', () => {

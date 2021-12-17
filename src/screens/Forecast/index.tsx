@@ -28,8 +28,11 @@ export function Forecast() {
         }
     }
     useEffect(() => {
-        fetchDays()
-    }, [city.id]);
+        fetchDays();
+        return () => {
+            setDays([]); // This worked for me
+          };
+    }, []);
     function handleWaves(state: State, city: City, day: Days) {
         navigation.navigate('Waves', { city, day, state })
     }
@@ -44,7 +47,7 @@ export function Forecast() {
                     translucent
                     backgroundColor="transparent"
                 />
-                <BackButton onPress={handleBack} />
+                <BackButton  onPress={handleBack} />
                 <Title>
                     Você está em {'\n'}
                     {city.cidade} na {'\n'}
