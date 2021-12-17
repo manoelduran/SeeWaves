@@ -5,6 +5,7 @@ import * as api from '../../services/api';
 import { CityList, Container, Header, Title, Subtitle } from './styles';
 import { Loading } from '../../components/Loading';
 import { CitiesList } from '../../components/CitiesList';
+import { LoadAnimation } from '../../components/LoadAnimation';
 
 interface Params {
     state: State;
@@ -27,7 +28,7 @@ export function SelectedState() {
     }
     useEffect(() => {
         fetchSelectedState()
-    }, []);
+    }, [state.abreviatura]);
     function handleSelectedState(state: State, city: City) {
         navigation.navigate('Forecast', { state, city })
     }
@@ -48,7 +49,7 @@ export function SelectedState() {
                 </Subtitle>
             </Header>
             {loading ?
-                <Loading /> :
+                <LoadAnimation /> :
                 <CityList
                     data={cities}
                     keyExtractor={item => item.id}

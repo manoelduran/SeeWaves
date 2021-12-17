@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'react-native'
 import * as api from '../../services/api';
 import { Container, Header, Title, Subtitle, ListDays } from './styles';
-import { Loading } from '../../components/Loading';
 import { DaysList } from '../../components/DaysList';
+import { LoadAnimation } from '../../components/LoadAnimation';
 
 interface Params {
     state: State;
@@ -28,9 +28,9 @@ export function Forecast() {
     }
     useEffect(() => {
         fetchDays()
-    }, []);
-    function handleWaves( city: City, day: Days) {
-        navigation.navigate('Waves', {  city, day })
+    }, [city.id]);
+    function handleWaves(state: State, city: City, day: Days) {
+        navigation.navigate('Waves', { city, day, state })
     }
     return (
         <Container>
@@ -50,13 +50,13 @@ export function Forecast() {
                 </Subtitle>
             </Header>
             {loading ?
-                <Loading /> :
+                <LoadAnimation /> :
                 <ListDays
                     data={days}
                     keyExtractor={item => item.dia}
                     renderItem={({ item }) =>
                         <DaysList
-                            dia={item.dia} onPress={() => handleWaves(city, item)}
+                            dia={item.dia} onPress={() => handleWaves(state, city, item)}
                         />}
                 />
             }

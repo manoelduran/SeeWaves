@@ -4,7 +4,7 @@ import { BackHandler, StatusBar } from 'react-native'
 import { StateofList } from '../../components/StateofList';
 import * as api from '../../services/api';
 import { StateList, Container, Header, Title, Subtitle} from './styles';
-import { Loading } from '../../components/Loading';
+import { LoadAnimation } from '../../components/LoadAnimation';
 
 
 export function Home() {
@@ -50,7 +50,7 @@ export function Home() {
                 </Subtitle>
             </Header>
             {loading ?
-                <Loading /> :
+                <LoadAnimation /> :
                 <StateList
                     data={list}
                     keyExtractor={item => item.abreviatura}

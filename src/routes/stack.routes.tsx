@@ -4,12 +4,20 @@ import { Home } from '../screens/Home';
 import { SelectedState } from '../screens/SelectedState';
 import { Forecast } from '../screens/Forecast';
 import { Waves } from '../screens/Waves';
+import { Splash } from '../screens/Splash';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
 export function StackRoutes() {
     return (
-        <Navigator  initialRouteName="Home">
+        <Navigator initialRouteName="Splash">
+            <Screen
+                name="Splash"
+                options={{
+                    headerShown: false
+                }}
+                component={Splash}
+            />
             <Screen
                 name="Home"
                 options={{
@@ -18,27 +26,24 @@ export function StackRoutes() {
                 }}
                 component={Home}
             />
-             <Screen
+            <Screen
                 name="SelectedState"
                 options={{
                     headerShown: false,
-                    gestureEnabled: false,
                 }}
                 component={SelectedState}
             />
-                 <Screen
+            <Screen
                 name="Forecast"
                 options={{
                     headerShown: false,
-                    gestureEnabled: false,
                 }}
                 component={Forecast}
             />
-                <Screen
+            <Screen
                 name="Waves"
                 options={{
                     headerShown: false,
-                    gestureEnabled: false,
                 }}
                 component={Waves}
             />
