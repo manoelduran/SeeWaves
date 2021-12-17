@@ -6,6 +6,7 @@ import { CityList, Container, Header, Title, Subtitle } from './styles';
 import { Loading } from '../../components/Loading';
 import { CitiesList } from '../../components/CitiesList';
 import { LoadAnimation } from '../../components/LoadAnimation';
+import { BackButton } from '../../components/BackButton';
 
 interface Params {
     state: State;
@@ -32,6 +33,9 @@ export function SelectedState() {
     function handleSelectedState(state: State, city: City) {
         navigation.navigate('Forecast', { state, city })
     }
+    function handleBack(){
+        navigation.goBack()
+    }
     return (
         <Container>
             <Header>
@@ -40,6 +44,7 @@ export function SelectedState() {
                     translucent
                     backgroundColor="transparent"
                 />
+                <BackButton onPress={handleBack} />
                 <Title>
                     Você está em {'\n'}
                     {state.abreviatura}

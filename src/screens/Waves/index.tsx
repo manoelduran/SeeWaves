@@ -1,18 +1,24 @@
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { DataTable } from 'react-native-paper';
 import React, { useState } from 'react';
 import { StatusBar, Text } from 'react-native'
 import { VictoryAxis, VictoryBar, VictoryChart } from 'victory-native';
 import { Container, Header, Title, Subtitle, ChartContainer, Content } from './styles';
+import { BackButton } from '../../components/BackButton';
 interface Params {
     state: State
     day: Days;
     city: City;
 };
 export function Waves() {
+    const navigation = useNavigation();
     const route = useRoute();
     const { state, city, day } = route.params as Params;
+    function handleBack(){
+        navigation.goBack()
+    }
     return (
         <Container>
             <Header>
@@ -21,6 +27,7 @@ export function Waves() {
                     translucent
                     backgroundColor="transparent"
                 />
+                <BackButton onPress={handleBack} />
                 <Title>
                     Você está em {'\n'}
                     {city.cidade} na {'\n'}
@@ -32,7 +39,7 @@ export function Waves() {
                 </Subtitle>
             </Header>
             <Content>
-            <Text>Grafico Velocidade x Horário</Text>
+                <Text>Grafico Velocidade x Horário</Text>
                 <ChartContainer>
                     <VictoryChart>
                         <VictoryBar
@@ -51,17 +58,49 @@ export function Waves() {
                         {
                             [day.previsoes[1].vento.velocidade, day.previsoes[2].vento.velocidade, day.previsoes[3].vento.velocidade, day.previsoes[4].vento.velocidade, day.previsoes[5].vento.velocidade].map((d, i) => {
                                 return (
-                                    <VictoryAxis 
+                                    <VictoryAxis
                                         key={i}
                                         style={{ tickLabels: { fill: "none" } }}
                                     />
-                                    
+
                                 );
                             })
                         }
                     </VictoryChart>
                 </ChartContainer>
-                <Text></Text>
+                <DataTable>
+                    <DataTable.Header >
+                        <DataTable.Title>Horário</DataTable.Title>
+                        <DataTable.Title >Direção</DataTable.Title>
+                        <DataTable.Title >Velocidade</DataTable.Title>
+                    </DataTable.Header>
+
+                    <DataTable.Row >
+                        <DataTable.Cell>{day.previsoes[1].horario}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[1].vento.direcao}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[1].vento.velocidade}</DataTable.Cell>
+                    </DataTable.Row>
+                    <DataTable.Row>
+                        <DataTable.Cell>{day.previsoes[2].horario}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[2].vento.direcao}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[2].vento.velocidade}</DataTable.Cell>
+                    </DataTable.Row>
+                    <DataTable.Row>
+                        <DataTable.Cell>{day.previsoes[3].horario}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[3].vento.direcao}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[3].vento.velocidade}</DataTable.Cell>
+                    </DataTable.Row>
+                    <DataTable.Row>
+                        <DataTable.Cell>{day.previsoes[4].horario}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[4].vento.direcao}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[4].vento.velocidade}</DataTable.Cell>
+                    </DataTable.Row>
+                    <DataTable.Row>
+                        <DataTable.Cell>{day.previsoes[5].horario}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[5].vento.direcao}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[5].vento.velocidade}</DataTable.Cell>
+                    </DataTable.Row>
+                </DataTable>
                 <Text>Grafico Altura x Horário</Text>
                 <ChartContainer>
                     <VictoryChart>
@@ -69,8 +108,8 @@ export function Waves() {
                             style={{ data: { fill: "white", width: 15 } }}
                             data={[
                                 { x: day.previsoes[1].horario, y: day.previsoes[1].altura.distancia },
-                                { x: day.previsoes[2].horario, y: day.previsoes[2].altura.distancia},
-                                { x: day.previsoes[3].horario, y: day.previsoes[3].altura.distancia},
+                                { x: day.previsoes[2].horario, y: day.previsoes[2].altura.distancia },
+                                { x: day.previsoes[3].horario, y: day.previsoes[3].altura.distancia },
                                 { x: day.previsoes[4].horario, y: day.previsoes[4].altura.distancia },
                                 { x: day.previsoes[5].horario, y: day.previsoes[5].altura.distancia },
                             ]}
@@ -81,7 +120,7 @@ export function Waves() {
                         {
                             [day.previsoes[1].altura.distancia, day.previsoes[2].altura.distancia, day.previsoes[3].altura.distancia, day.previsoes[4].altura.distancia, day.previsoes[5].altura.distancia].map((d, i) => {
                                 return (
-                                    <VictoryAxis 
+                                    <VictoryAxis
                                         key={i}
                                         style={{ tickLabels: { fill: "none" } }}
                                     />
@@ -90,6 +129,39 @@ export function Waves() {
                         }
                     </VictoryChart>
                 </ChartContainer>
+                <DataTable>
+                    <DataTable.Header >
+                        <DataTable.Title>Horário</DataTable.Title>
+                        <DataTable.Title >Direção</DataTable.Title>
+                        <DataTable.Title >Distância</DataTable.Title>
+                    </DataTable.Header>
+
+                    <DataTable.Row >
+                        <DataTable.Cell>{day.previsoes[1].horario}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[1].altura.direcao}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[1].altura.distancia}</DataTable.Cell>
+                    </DataTable.Row>
+                    <DataTable.Row>
+                        <DataTable.Cell>{day.previsoes[2].horario}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[2].altura.direcao}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[2].altura.distancia}</DataTable.Cell>
+                    </DataTable.Row>
+                    <DataTable.Row>
+                        <DataTable.Cell>{day.previsoes[3].horario}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[3].altura.direcao}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[3].altura.distancia}</DataTable.Cell>
+                    </DataTable.Row>
+                    <DataTable.Row>
+                        <DataTable.Cell>{day.previsoes[4].horario}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[4].altura.direcao}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[4].altura.distancia}</DataTable.Cell>
+                    </DataTable.Row>
+                    <DataTable.Row>
+                        <DataTable.Cell>{day.previsoes[5].horario}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[5].altura.direcao}</DataTable.Cell>
+                        <DataTable.Cell >{day.previsoes[5].altura.distancia}</DataTable.Cell>
+                    </DataTable.Row>
+                </DataTable>
             </Content>
         </Container>
     );

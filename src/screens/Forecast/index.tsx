@@ -5,6 +5,7 @@ import * as api from '../../services/api';
 import { Container, Header, Title, Subtitle, ListDays } from './styles';
 import { DaysList } from '../../components/DaysList';
 import { LoadAnimation } from '../../components/LoadAnimation';
+import { BackButton } from '../../components/BackButton';
 
 interface Params {
     state: State;
@@ -32,6 +33,9 @@ export function Forecast() {
     function handleWaves(state: State, city: City, day: Days) {
         navigation.navigate('Waves', { city, day, state })
     }
+    function handleBack(){
+        navigation.goBack()
+    }
     return (
         <Container>
             <Header>
@@ -40,6 +44,7 @@ export function Forecast() {
                     translucent
                     backgroundColor="transparent"
                 />
+                <BackButton onPress={handleBack} />
                 <Title>
                     Você está em {'\n'}
                     {city.cidade} na {'\n'}
