@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import BrandSvg from '../../assets/brand.svg';
+import BrandSvg from '../../assets/splash.svg';
 import LogoSvg from '../../assets/logo.svg';
 import { useNavigation } from '@react-navigation/native';
 import Animated, {
@@ -67,7 +67,7 @@ export function Splash() {
     return (
         <Container>
             <Animated.View style={[brandStyle, { position: 'absolute' }]} >
-                <BrandSvg width={80} height={50} />
+                <BrandSvg width={180} height={180} />
             </Animated.View>
             <Animated.View style={[logoStyle, { position: 'absolute' }]}  >
                 <LogoSvg width={180} height={20} />
