@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import BrandSvg from '../../assets/splash.svg';
-import LogoSvg from '../../assets/logo.svg';
+import BrandSvg from '../../assets/whitewave.svg';
+import LogoSvg from '../../assets/whitelogo.svg';
 import { useNavigation } from '@react-navigation/native';
 import Animated, {
     useAnimatedStyle,
