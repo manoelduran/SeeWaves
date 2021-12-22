@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { BackHandler, StatusBar } from 'react-native'
+import LogoPng from '../../assets/fontazul.png';
 import { StateofList } from '../../components/StateofList';
 import * as api from '../../services/api';
-import { StateList, Container, Header, Title, Subtitle} from './styles';
+import { StateList, Container, Header, Title, Subtitle } from './styles';
 import { LoadAnimation } from '../../components/LoadAnimation';
 
 
@@ -25,19 +26,19 @@ export function Home() {
         fetchStateList()
         return () => {
             setList([]); // This worked for me
-          };
+        };
     }, []);
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', () => {
             return true;
         })
     }, []) // faz n voltar para a tela de splash
-    function handleSelectedState(state: State){
-        navigation.navigate('SelectedState', { state})
+    function handleSelectedState(state: State) {
+        navigation.navigate('SelectedState', { state })
     }
     return (
         <Container>
-                 <Header>
+            <Header>
                 <StatusBar
                     barStyle="dark-content"
                     translucent
@@ -46,7 +47,7 @@ export function Home() {
                 <Title>
                     Bem vindo {'\n'}
                     ao {'\n'}
-                    SeeWaves
+                    <LogoPng width={30} height={30}/>
                 </Title>
                 <Subtitle>
                     Selecione um estado:
@@ -56,8 +57,8 @@ export function Home() {
                 <LoadAnimation /> :
                 <StateList
                     data={list}
-                    keyExtractor={item => item.abreviatura}
-                    renderItem={({ item }) =>
+                    keyExtractor={(item: State) => item.abreviatura}
+                    renderItem={({ item }: any) =>
                         <StateofList key={item.abreviatura} abreviatura={item.abreviatura} onPress={() => handleSelectedState(item)} />}
                 />
             }

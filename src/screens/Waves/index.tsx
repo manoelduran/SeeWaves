@@ -54,7 +54,7 @@ export function Waves() {
                     <LoadAnimation /> :
                     <>
                         <Text>Grafico Velocidade x Horário</Text>
-                        <ChartContainer>
+                        {/* <ChartContainer>
                             <VictoryChart>
                                 <VictoryBar
                                     style={{ data: { fill: "white", width: 15 } }}
@@ -81,7 +81,7 @@ export function Waves() {
                                     })
                                 }
                             </VictoryChart>
-                        </ChartContainer>
+                        </ChartContainer> */}
                         <DataTable>
                             <DataTable.Header >
                                 <DataTable.Title>Horário</DataTable.Title>
@@ -116,7 +116,7 @@ export function Waves() {
                             </DataTable.Row>
                         </DataTable>
                         <Text>Grafico Altura x Horário</Text>
-                        <ChartContainer>
+                        {/* <ChartContainer>
                             <VictoryChart>
                                 <VictoryBar
                                     style={{ data: { fill: "white", width: 15 } }}
@@ -142,7 +142,7 @@ export function Waves() {
                                     })
                                 }
                             </VictoryChart>
-                        </ChartContainer>
+                        </ChartContainer> */}
                         <DataTable>
                             <DataTable.Header >
                                 <DataTable.Title>Horário</DataTable.Title>

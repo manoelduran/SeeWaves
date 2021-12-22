@@ -61,10 +61,10 @@ export function Forecast() {
                 <LoadAnimation /> :
                 <ListDays
                     data={days}
-                    keyExtractor={item => item.dia}
-                    renderItem={({ item }) =>
+                    keyExtractor={(item: Days) => item.dia}
+                    renderItem={({ item }: any) =>
                         <DaysList
-                            dia={item.dia} onPress={() => handleWaves(state, city, item)}
+                           key={item.dia} dia={item.dia} onPress={() => handleWaves(state, city, item)}
                         />}
                 />
             }

@@ -11,6 +11,9 @@ import { BackButton } from '../../components/BackButton';
 interface Params {
     state: State;
 };
+export type RootStackParamList = {
+    YourScreen: { id: string };
+  };
 export function SelectedState() {
     const navigation = useNavigation();
     const route = useRoute();
@@ -20,7 +23,7 @@ export function SelectedState() {
     async function fetchSelectedState() {
         try {
             const listOfCities = await api.searchCities(state.abreviatura);
-            setCities(listOfCities)
+            setCities(listOfCities.filter(x => x.cidade.split(" ").length === 1))
         } catch (err) {
             console.log(err)
         } finally {
@@ -31,12 +34,12 @@ export function SelectedState() {
         fetchSelectedState()
         return () => {
             setCities([]); // This worked for me
-          };
+        };
     }, []);
     function handleSelectedState(state: State, city: City) {
         navigation.navigate('Forecast', { state, city })
     }
-    function handleBack(){
+    function handleBack() {
         navigation.goBack()
     }
     return (
@@ -60,8 +63,8 @@ export function SelectedState() {
                 <LoadAnimation /> :
                 <CityList
                     data={cities}
-                    keyExtractor={item => item.id}
-                    renderItem={({ item }) =>
+                    keyExtractor={(item: City) => item.id}
+                    renderItem={({ item }: any) =>
                         <CitiesList key={item.id} onPress={() => handleSelectedState(state, item)} cidade={item.cidade} id={item.id} />
                     }
                 />

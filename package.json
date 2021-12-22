@@ -38,6 +38,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@types/": "react-navigation/native",
+    "@types/node": "^17.0.2",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
     "@types/styled-components": "^5.1.17",
