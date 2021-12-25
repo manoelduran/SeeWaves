@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
+import SeeSvg from '../../assets/see.svg';
 import { BackHandler, StatusBar } from 'react-native';
 import { StateofList } from '../../components/StateofList';
 import * as api from '../../services/api';
-import { StateList, Container, Header, Title, Subtitle } from './styles';
+import { StateList, Container, Header, Title, Subtitle, Logo } from './styles';
 import { LoadAnimation } from '../../components/LoadAnimation';
 
 
@@ -46,8 +47,10 @@ export function Home() {
                 <Title>
                     Bem vindo {'\n'}
                     ao {'\n'}
-
                 </Title>
+                <Logo
+                    source={{ uri: 'https://github.com/manoelduran.png' }}
+                />
                 <Subtitle>
                     Selecione um estado:
                 </Subtitle>

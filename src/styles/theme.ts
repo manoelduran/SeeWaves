@@ -6,6 +6,7 @@ export default {
         text_datails: "#AEAEB3",
         line: "#EBEBF0",
         shape: "#ffffff",
+        title: '#273b5d',
     },
     fonts: {
         regular: 'Poppins_400Regular',

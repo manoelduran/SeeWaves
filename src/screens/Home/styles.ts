@@ -31,6 +31,12 @@ color: ${({ theme }) => theme.colors.shape};
 margin-top: 24px;
 `;
 
+export const Logo = styled.Image`
+width: 30px;
+height: 40px;
+
+`;
+
 export const StateList = styled(FlatList as new () =>FlatList<{estados: State[]}>).attrs({
     contentContainerStyle: {
         padding: 24

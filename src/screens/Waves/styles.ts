@@ -36,5 +36,31 @@ width: 100%;
 export const ChartContainer = styled.View`
 width: 100%;
 align-items: center;
+justify-content: center;
+padding: 25px;
 `;
 
+export const TabelLabel = styled.Text`
+font-size: ${RFValue(30)}px;
+text-align: center;
+font-family: ${({ theme }) => theme.fonts.medium};
+color: ${({ theme }) => theme.colors.title};
+margin-top: 24px;
+`;
+
+export const Tabel = styled.View`
+max-width: 100%;
+background-color: ${({theme}) => theme.colors.header};
+border-radius: 50px ;
+padding: 20px;
+`;
+
+export const TextTabel = styled.Text`
+color: ${({theme}) => theme.colors.shape};
+font-size: ${RFValue(17)}px;
+`;
+
+export const TextValue = styled.Text`
+color: ${({theme}) => theme.colors.shape};
+font-size: ${RFValue(15)}px;
+`;
