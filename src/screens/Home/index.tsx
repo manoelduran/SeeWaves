@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { BackHandler, StatusBar } from 'react-native'
-import LogoPng from '../../assets/fontazul.png';
+import { BackHandler, StatusBar } from 'react-native';
 import { StateofList } from '../../components/StateofList';
 import * as api from '../../services/api';
 import { StateList, Container, Header, Title, Subtitle } from './styles';
@@ -9,7 +8,7 @@ import { LoadAnimation } from '../../components/LoadAnimation';
 
 
 export function Home() {
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
     const [list, setList] = useState<State[]>([]);
     const [loading, setLoading] = useState(true);
     async function fetchStateList() {
@@ -47,7 +46,7 @@ export function Home() {
                 <Title>
                     Bem vindo {'\n'}
                     ao {'\n'}
-                    <LogoPng width={30} height={30}/>
+
                 </Title>
                 <Subtitle>
                     Selecione um estado:

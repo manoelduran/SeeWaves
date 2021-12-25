@@ -17,7 +17,7 @@ import {
 
 
 export function Splash() {
-    const navigation = useNavigation()
+    const navigation = useNavigation<any>();
     const splashAnimation = useSharedValue(0);
 
     const brandStyle = useAnimatedStyle(() => {

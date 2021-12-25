@@ -14,7 +14,7 @@ interface Params {
     city: City;
 };
 export function Waves() {
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
     const route = useRoute();
     const { state, city, day } = route.params as Params;
     const [loading, setLoading] = useState(true);

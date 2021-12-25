@@ -12,7 +12,7 @@ interface Params {
     city: City;
 };
 export function Forecast() {
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
     const route = useRoute();
     const { city, state } = route.params as Params;
     const [days, setDays] = useState<Days[]>([]);

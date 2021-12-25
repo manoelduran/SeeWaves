@@ -15,7 +15,7 @@ export type RootStackParamList = {
     YourScreen: { id: string };
   };
 export function SelectedState() {
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
     const route = useRoute();
     const { state } = route.params as Params;
     const [cities, setCities] = useState<City[]>([]);
