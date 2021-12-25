@@ -50,7 +50,7 @@ margin-top: 24px;
 
 export const Tabel = styled.View`
 max-width: 100%;
-background-color: ${({theme}) => theme.colors.header};
+background-color: ${({theme}) => theme.colors.text_datails};
 border-radius: 50px ;
 padding: 20px;
 `;
