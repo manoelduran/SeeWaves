@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { DataTable } from 'react-native-paper';
 import React, { useEffect, useState } from 'react';
-import { StatusBar, Text } from 'react-native'
+import { StatusBar } from 'react-native'
 import { Container, Header, Title, Subtitle, ChartContainer, Content, TabelLabel, Tabel, TextTabel, TextValue } from './styles';
 import { BackButton } from '../../components/BackButton';
 import { LoadAnimation } from '../../components/LoadAnimation';

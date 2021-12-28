@@ -5,6 +5,7 @@ import { SelectedState } from '../screens/SelectedState';
 import { Forecast } from '../screens/Forecast';
 import { Waves } from '../screens/Waves';
 import { Splash } from '../screens/Splash';
+import { SignIn } from '../screens/SignIn';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -17,6 +18,14 @@ export function StackRoutes() {
                     headerShown: false
                 }}
                 component={Splash}
+            />
+                      <Screen
+                name="SignIn"
+                options={{
+                    headerShown: false,
+                    gestureEnabled: false,
+                }}
+                component={SignIn}
             />
             <Screen
                 name="Home"

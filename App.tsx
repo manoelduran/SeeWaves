@@ -9,6 +9,7 @@ import {
 import { ThemeProvider } from 'styled-components';
 import theme from './src/styles/theme';
 import {Routes} from './src/routes/index'
+import { AuthProvider } from './src/hooks/auth';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -20,10 +21,10 @@ export default function App() {
     return <AppLoading />
   }
   return (
-    <>
+    <AuthProvider>
       <ThemeProvider theme={theme}>
         <Routes/>
       </ThemeProvider>
-    </>
+    </AuthProvider>
   );
 }
