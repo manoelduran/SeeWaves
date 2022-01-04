@@ -1,15 +1,20 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import SeeSvg from '../../assets/see.svg';
-import { BackHandler, StatusBar } from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import { Alert, BackHandler, StatusBar } from 'react-native';
 import { StateofList } from '../../components/StateofList';
 import * as api from '../../services/api';
-import { StateList, Container, Header, Title, Subtitle, Logo } from './styles';
+import { StateList, Container, Header, Title, Subtitle, Logo, LogoutButton } from './styles';
 import { LoadAnimation } from '../../components/LoadAnimation';
+import { useAuth } from '../../hooks/auth';
+import { useTheme } from 'styled-components/native';
 
 
 export function Home() {
+    const {signOut, user} = useAuth();
     const navigation = useNavigation<any>();
+    const theme = useTheme();
     const [list, setList] = useState<State[]>([]);
     const [loading, setLoading] = useState(true);
     async function fetchStateList() {
@@ -36,6 +41,24 @@ export function Home() {
     function handleSelectedState(state: State) {
         navigation.navigate('SelectedState', { state })
     }
+
+    async function handleSignOut() {
+        Alert.alert('Tem certeza',
+            'Se você sair, irá precisar de internet para conectar-se novamente.',
+            [
+                {
+                    text: 'Cancelar',
+                    onPress: () => { },
+                    style: 'cancel'
+                },
+                {
+                    text: 'Sair',
+                    onPress: () => signOut()
+                }
+            ]
+        );
+    };
+
     return (
         <Container>
             <Header>
@@ -48,6 +71,13 @@ export function Home() {
                     Bem vindo {'\n'}
                     ao {'\n'}
                 </Title>
+                <LogoutButton onPress={handleSignOut}  >
+                    <Feather
+                        name="power"
+                        color={theme.colors.shape}
+                        size={24}
+                    />
+                </LogoutButton>
                 <Logo
                     source={{ uri: 'https://github.com/manoelduran.png' }}
                 />

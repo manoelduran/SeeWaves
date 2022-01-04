@@ -1,4 +1,5 @@
 import { FlatList } from 'react-native';
+import { BorderlessButton } from 'react-native-gesture-handler';
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
@@ -44,5 +45,8 @@ export const StateList = styled(FlatList as new () =>FlatList<{estados: State[]}
     showsVerticalScrollIndicator: false
     })`
     `;
+
+export const LogoutButton = styled(BorderlessButton)`
+`;
 
 

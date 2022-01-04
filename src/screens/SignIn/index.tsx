@@ -29,7 +29,6 @@ export function SignIn() {
             })
             await schema.validate({ email, password })
             signIn({ email, password })
-            navigation.navigate('Home')
         } catch (error) {
             throw new Error(error as string);
         }

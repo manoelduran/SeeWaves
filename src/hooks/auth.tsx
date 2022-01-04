@@ -11,7 +11,8 @@ interface LoginProps {
 }
 
 interface AuthContextData {
-    user: User;
+    user: User | null;
+    loading: boolean;
     signIn: ({ email, password }: LoginProps) => Promise<void>;
     signOut: () => Promise<void>;
 }
@@ -19,7 +20,8 @@ interface AuthContextData {
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 function AuthProvider({ children }: AuthProvider) {
-    const [user, setUser] = useState<User>({} as User);
+    const [user, setUser] = useState<User | null>({} as User ?? null);
+    const [loading, setLoading] = useState(true);
     async function signIn({ password, email }: LoginProps) {
         try {
             const userData = ({
@@ -47,17 +49,14 @@ function AuthProvider({ children }: AuthProvider) {
         async function loadUserData() {
             const userCollection = await AsyncStorage.getItem('@user')
             const response = await JSON.parse(String(userCollection))
-            if (response.length > 0) {
-                const userDate = response[0]._raw as unknown as User;
-                setUser(userDate)
-                console.log(userDate)
-            };
+            setUser(response)
+            setLoading(false);
         }
         loadUserData();
     }, [])
 
     return (
-        <AuthContext.Provider value={{ user, signIn, signOut }}>
+        <AuthContext.Provider value={{ user, signIn, signOut, loading }}>
             {children}
         </AuthContext.Provider>
     )
