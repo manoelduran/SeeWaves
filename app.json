@@ -2,6 +2,7 @@
   "expo": {
     "name": "seewaves",
     "slug": "seewaves",
+    "icon": "./assets/icon.png",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
