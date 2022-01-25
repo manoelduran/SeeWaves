@@ -8,6 +8,14 @@
     ],
     "splash": {
       "image": "./assets/splash.png"
+    },
+    "ios": {
+      "bundleIdentifier": "com.gofinances",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.gofinances",
+      "versionCode": 1
     }
   },
   "name": "seewaves"
