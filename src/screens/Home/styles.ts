@@ -1,5 +1,4 @@
 import { FlatList } from 'react-native';
-import { BorderlessButton } from 'react-native-gesture-handler';
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
@@ -17,12 +16,15 @@ justify-content: center;
 padding: 25px;
 padding-top: ${getStatusBarHeight() + 30}px;
 `;
-
+export const RowDiv = styled.View`
+flex-direction: row;
+justify-content: space-between;
+`;
 export const Title = styled.Text`
 font-size: ${RFValue(30)}px;
 font-family: ${({ theme }) => theme.fonts.medium};
 color: ${({ theme }) => theme.colors.shape};
-margin-top: 24px;
+
 `;
 
 export const Subtitle = styled.Text`
@@ -46,7 +48,7 @@ export const StateList = styled(FlatList as new () =>FlatList<{estados: State[]}
     })`
     `;
 
-export const LogoutButton = styled(BorderlessButton)`
+export const LogoutButton = styled.TouchableOpacity`
 `;
 
 

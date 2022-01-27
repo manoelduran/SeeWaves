@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'react-native'
 import * as api from '../../services/api';
 import { CityList, Container, Header, Title, Subtitle } from './styles';
-import { Loading } from '../../components/Loading';
 import { CitiesList } from '../../components/CitiesList';
 import { LoadAnimation } from '../../components/LoadAnimation';
 import { BackButton } from '../../components/BackButton';

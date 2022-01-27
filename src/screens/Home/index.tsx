@@ -1,18 +1,17 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import SeeSvg from '../../assets/see.svg';
 import { Feather } from '@expo/vector-icons';
 import { Alert, BackHandler, StatusBar } from 'react-native';
 import { StateofList } from '../../components/StateofList';
 import * as api from '../../services/api';
-import { StateList, Container, Header, Title, Subtitle, Logo, LogoutButton } from './styles';
+import { StateList, Container, Header, Title, Subtitle, LogoutButton, RowDiv } from './styles';
 import { LoadAnimation } from '../../components/LoadAnimation';
 import { useAuth } from '../../hooks/auth';
 import { useTheme } from 'styled-components/native';
 
 
 export function Home() {
-    const {signOut, user} = useAuth();
+    const { signOut } = useAuth();
     const navigation = useNavigation<any>();
     const theme = useTheme();
     const [list, setList] = useState<State[]>([]);
@@ -67,20 +66,20 @@ export function Home() {
                     translucent
                     backgroundColor="transparent"
                 />
-                <Title>
-                    Bem vindo {'\n'}
-                    ao {'\n'}
-                </Title>
-                <LogoutButton onPress={handleSignOut}  >
-                    <Feather
-                        name="power"
-                        color={theme.colors.shape}
-                        size={24}
-                    />
-                </LogoutButton>
-                <Logo
-                    source={{ uri: 'https://github.com/manoelduran.png' }}
-                />
+                <RowDiv>
+                    <Title>
+                        Bem vindo {'\n'}
+                        ao {'\n'}
+                        SeeWaves
+                    </Title>
+                    <LogoutButton onPress={handleSignOut}  >
+                        <Feather
+                            name="power"
+                            color={theme.colors.shape}
+                            size={24}
+                        />
+                    </LogoutButton>
+                </RowDiv>
                 <Subtitle>
                     Selecione um estado:
                 </Subtitle>
